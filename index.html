@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Food That We Share</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- or ../styles.css in recipes/ -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">The Food That We Share</div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="recipes/broccoli.html">Broccoli</a>
+      <a href="recipes/carrot-cake.html">Dessert</a>
+    </nav>
+  </header>
+
+  <div class="top-bar">
+    <div class="search-block">
+      <label for="search-input">Search recipes</label>
+      <input id="search-input" type="text" placeholder="Search by title, ingredient…">
+    </div>
+
+    <div class="tags-block">
+      <button class="tag-button" data-tag="summer">Summer</button>
+      <button class="tag-button" data-tag="broccoli">Broccoli</button>
+      <button class="tag-button" data-tag="weeknight">Weeknight</button>
+      <button class="tag-button" data-tag="dessert">Dessert</button>
+    </div>
+  </div>
+
+  <main class="layout-full">
+    <section class="content">
+      <h1 class="page-title">Latest recipes</h1>
+      <div id="recipes-grid" class="recipes-grid">
+        <!-- Recipe cards go here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Recipes, opinions, recommendations, and so much more.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
