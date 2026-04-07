@@ -1,48 +1,321 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>The Food That We Share</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"> <!-- or ../styles.css in recipes/ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Recipes, Newsletters & More</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">The Food That We Share</div>
-    <nav class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="recipes/broccoli.html">Broccoli</a>
-      <a href="recipes/carrot-cake.html">Dessert</a>
+
+  <!-- =====================
+       NAV
+  ===================== -->
+  <header>
+    <nav class="nav">
+      <a href="/" class="nav__logo">Your Name</a>
+      <ul class="nav__links">
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#newsletter" class="nav__cta">Subscribe</a></li>
+      </ul>
     </nav>
   </header>
 
-  <div class="top-bar">
-    <div class="search-block">
-      <label for="search-input">Search recipes</label>
-      <input id="search-input" type="text" placeholder="Search by title, ingredient…">
-    </div>
 
-    <div class="tags-block">
-      <button class="tag-button" data-tag="summer">Summer</button>
-      <button class="tag-button" data-tag="broccoli">Broccoli</button>
-      <button class="tag-button" data-tag="weeknight">Weeknight</button>
-      <button class="tag-button" data-tag="dessert">Dessert</button>
-    </div>
-  </div>
-
-  <main class="layout-full">
-    <section class="content">
-      <h1 class="page-title">Latest recipes</h1>
-      <div id="recipes-grid" class="recipes-grid">
-        <!-- Recipe cards go here -->
+  <!-- =====================
+       HERO
+  ===================== -->
+  <main>
+    <section class="hero">
+      <div class="hero__text">
+        <span class="hero__eyebrow">New cookbook out now</span>
+        <h1 class="hero__title">
+          Good food,<br>
+          made <em>simply.</em>
+        </h1>
+        <p class="hero__subtitle">
+          Recipes built on big flavor, honest ingredients, and the belief that cooking
+          should feel less like a project and more like a pleasure.
+        </p>
+        <div class="hero__actions">
+          <a href="#recipes" class="btn btn--primary">Browse Recipes</a>
+          <a href="#newsletter" class="btn btn--outline">Get the Newsletter</a>
+        </div>
+      </div>
+      <div class="hero__image">
+        <!-- Replace src with your own hero photo -->
+        <img
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+          alt="A beautifully plated dish"
+        />
+        <div class="hero__image-caption">Something From Nothing — the new cookbook</div>
       </div>
     </section>
+
+
+    <!-- =====================
+         TICKER
+    ===================== -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <!-- Repeated twice for seamless loop -->
+        <span class="ticker__item">Weeknight Pasta</span>
+        <span class="ticker__item">Slow Roasted Chicken</span>
+        <span class="ticker__item">New Cookbook Out Now</span>
+        <span class="ticker__item">Subscribe to the Newsletter</span>
+        <span class="ticker__item">The Best Salted Chocolate Cookies</span>
+        <span class="ticker__item">One Pot. Big Flavor.</span>
+        <span class="ticker__item">Weeknight Pasta</span>
+        <span class="ticker__item">Slow Roasted Chicken</span>
+        <span class="ticker__item">New Cookbook Out Now</span>
+        <span class="ticker__item">Subscribe to the Newsletter</span>
+        <span class="ticker__item">The Best Salted Chocolate Cookies</span>
+        <span class="ticker__item">One Pot. Big Flavor.</span>
+      </div>
+    </div>
+
+
+    <!-- =====================
+         FEATURED RECIPE
+    ===================== -->
+    <section class="section" id="recipes">
+      <div class="section-header">
+        <h2 class="section-title">This Week's Recipe</h2>
+        <a href="#" class="section-link">All recipes →</a>
+      </div>
+
+      <article class="featured-recipe">
+        <div class="featured-recipe__image">
+          <img
+            src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80"
+            alt="Slow Cooked Lamb"
+          />
+        </div>
+        <div class="featured-recipe__content">
+          <span class="featured-recipe__label">★ &nbsp; Featured this week</span>
+          <h3 class="featured-recipe__title">
+            Slow Cooked Lamb<br>with White Wine<br>&amp; Potatoes
+          </h3>
+          <p class="featured-recipe__desc">
+            The most important part of this recipe is that it takes a long (slow) time,
+            and I prefer to do it overnight. Don't overthink it — it's a beyond simple dish
+            with exquisite results.
+          </p>
+          <a href="#" class="btn btn--primary">Get the Recipe</a>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- =====================
+         RECIPE GRID
+    ===================== -->
+    <section class="section section--alt">
+      <div class="section-header">
+        <h2 class="section-title">More to Cook</h2>
+        <a href="#" class="section-link">See all →</a>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="categories" style="margin-bottom: 2.5rem;">
+        <button class="category-pill active" data-category="all">All</button>
+        <button class="category-pill" data-category="pasta">Pasta</button>
+        <button class="category-pill" data-category="chicken">Chicken</button>
+        <button class="category-pill" data-category="vegetables">Vegetables</button>
+        <button class="category-pill" data-category="dessert">Dessert</button>
+        <button class="category-pill" data-category="salads">Salads</button>
+      </div>
+
+      <div class="recipe-grid">
+
+        <article class="recipe-card" data-category="pasta">
+          <div class="recipe-card__image">
+            <img
+              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80"
+              alt="Pasta dish"
+            />
+          </div>
+          <div class="recipe-card__body">
+            <div class="recipe-card__tag">Pasta</div>
+            <h3 class="recipe-card__title">Caramelized Onion Pasta</h3>
+            <p class="recipe-card__desc">The kind of pasta you'll make on a Tuesday and think about until Friday.</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" data-category="chicken">
+          <div class="recipe-card__image">
+            <img
+              src="https://images.unsplash.com/photo-1598103442097-8b74394b95c8?w=600&q=80"
+              alt="Roast chicken"
+            />
+          </div>
+          <div class="recipe-card__body">
+            <div class="recipe-card__tag">Chicken</div>
+            <h3 class="recipe-card__title">Spatchcocked Roast Chicken</h3>
+            <p class="recipe-card__desc">Crispy skin, juicy meat, done in half the time. This is the only way.</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" data-category="dessert">
+          <div class="recipe-card__image">
+            <img
+              src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80"
+              alt="Chocolate cookies"
+            />
+          </div>
+          <div class="recipe-card__body">
+            <div class="recipe-card__tag">Dessert</div>
+            <h3 class="recipe-card__title">Salted Chocolate Chunk Cookies</h3>
+            <p class="recipe-card__desc">Brown butter, maldon salt, and pools of chocolate. Your move.</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" data-category="salads">
+          <div class="recipe-card__image">
+            <img
+              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80"
+              alt="Salad"
+            />
+          </div>
+          <div class="recipe-card__body">
+            <div class="recipe-card__tag">Salad</div>
+            <h3 class="recipe-card__title">Little Gem Caesar</h3>
+            <p class="recipe-card__desc">Big croutons, lots of anchovy, aggressively dressed. A commitment.</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" data-category="vegetables">
+          <div class="recipe-card__image">
+            <img
+              src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80"
+              alt="Roasted vegetables"
+            />
+          </div>
+          <div class="recipe-card__body">
+            <div class="recipe-card__tag">Vegetables</div>
+            <h3 class="recipe-card__title">Crispy Smashed Potatoes</h3>
+            <p class="recipe-card__desc">Boiled, smashed, and roasted until they become something truly unreasonable.</p>
+          </div>
+        </article>
+
+        <article class="recipe-card" data-category="pasta">
+          <div class="recipe-card__image">
+            <img
+              src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=600&q=80"
+              alt="Cacio e pepe"
+            />
+          </div>
+          <div class="recipe-card__body">
+            <div class="recipe-card__tag">Pasta</div>
+            <h3 class="recipe-card__title">Cacio e Pepe, Actually</h3>
+            <p class="recipe-card__desc">Three ingredients. Fifteen minutes. The stakes have never been higher.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- =====================
+         EXPLORE CATEGORIES
+    ===================== -->
+    <section class="section section--green">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Category</h2>
+      </div>
+      <div class="categories">
+        <a href="#" class="category-pill">Fish &amp; Seafood</a>
+        <a href="#" class="category-pill">Meat</a>
+        <a href="#" class="category-pill">Pasta &amp; Noodles</a>
+        <a href="#" class="category-pill">Rice &amp; Grains</a>
+        <a href="#" class="category-pill">Vegetables</a>
+        <a href="#" class="category-pill">Salads</a>
+        <a href="#" class="category-pill">Snacks</a>
+        <a href="#" class="category-pill">Soups &amp; Stews</a>
+        <a href="#" class="category-pill">Dessert</a>
+        <a href="#" class="category-pill">Breakfast</a>
+        <a href="#" class="category-pill">Drinks</a>
+      </div>
+    </section>
+
+
+    <!-- =====================
+         NEWSLETTER
+    ===================== -->
+    <section class="newsletter" id="newsletter">
+      <div>
+        <h2 class="newsletter__title">A Newsletter Worth<br>Opening.</h2>
+        <p class="newsletter__sub">
+          Recipes, opinions, recommendations, and the occasional cooking rant.
+          Delivered to your inbox when it's worth it.
+        </p>
+      </div>
+      <div>
+        <form class="newsletter__form" id="newsletter-form">
+          <input
+            type="email"
+            class="newsletter__input"
+            placeholder="your@email.com"
+            required
+            aria-label="Email address"
+          />
+          <button type="submit" class="newsletter__btn">Subscribe</button>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.72rem; opacity: 0.45; letter-spacing: 0.04em;">
+          No spam. Unsubscribe any time.
+        </p>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <p>Recipes, opinions, recommendations, and so much more.</p>
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Your Name</div>
+        <p class="footer__tagline">
+          Recipes, newsletters, and the honest belief that cooking should bring you joy, not stress.
+        </p>
+      </div>
+      <div>
+        <div class="footer__heading">Explore</div>
+        <ul class="footer__links">
+          <li><a href="#">All Recipes</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Books</a></li>
+          <li><a href="#">Recommendations</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Categories</div>
+        <ul class="footer__links">
+          <li><a href="#">Pasta</a></li>
+          <li><a href="#">Chicken</a></li>
+          <li><a href="#">Vegetables</a></li>
+          <li><a href="#">Dessert</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Follow</div>
+        <ul class="footer__links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Substack</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Your Name. All rights reserved.</span>
+      <span>Made with intention.</span>
+    </div>
   </footer>
 
   <script src="scripts.js"></script>

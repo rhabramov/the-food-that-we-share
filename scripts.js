@@ -1,98 +1,118 @@
-// scripts.js
-const recipes = [
-  {
-    title: "Charred Broccoli with Lemon and Anchovy",
-    excerpt: "Deeply roasted broccoli with a bright, salty dressing you’ll want to put on everything.",
-    tags: ["broccoli", "weeknight", "vegetarian", "summer"],
-    url: "recipes/broccoli.html",
-    image: "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"
-  },
-  {
-    title: "Tomato Tart with Garlic and Capers",
-    excerpt: "Flaky pastry, peak tomatoes, and lots of olive oil.",
-    tags: ["summer", "baking"],
-    url: "recipes/tomato-tart.html",
-    image: "https://images.pexels.com/photos/4109994/pexels-photo-4109994.jpeg"
-  },
-  {
-    title: "Caramelized Beans with Tomato & Cabbage",
-    excerpt: "Saucy, tangy, a little sweet from jammy tomatoes and browned cabbage.",
-    tags: ["winter", "beans", "comfort"],
-    url: "recipes/beans.html",
-    image: "https://images.pexels.com/photos/6287521/pexels-photo-6287521.jpeg"
-  },
-  {
-    title: "Midnight Carrot Cake",
-    excerpt: "No raisins, no nuts, just dense, custardy carrot cake from the fridge.",
-    tags: ["dessert", "baking"],
-    url: "recipes/carrot-cake.html",
-    image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg"
-  },
-];
+/* ============================================
+   SCRIPTS.JS — Site interactions
+   ============================================ */
 
-const gridEl = document.getElementById("recipes-grid");
-const searchInput = document.getElementById("search-input");
-const tagButtons = Array.from(document.querySelectorAll(".tag-button"));
+document.addEventListener('DOMContentLoaded', () => {
 
-let activeTag = null;
+  /* ----------------------------------------
+     Category pill filter
+     ---------------------------------------- */
+  const pills = document.querySelectorAll('.category-pill');
+  const recipeCards = document.querySelectorAll('.recipe-card[data-category]');
 
-function renderRecipes(list) {
-  gridEl.innerHTML = "";
-  if (list.length === 0) {
-    gridEl.innerHTML = "<p>No recipes found. Try a different search or tag.</p>";
-    return;
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const selected = pill.dataset.category;
+
+      // Toggle active state
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+
+      // Filter cards
+      recipeCards.forEach(card => {
+        const match = selected === 'all' || card.dataset.category === selected;
+        card.style.display = match ? 'block' : 'none';
+        // Recalculate border for grid
+        if (match) {
+          card.style.opacity = '0';
+          setTimeout(() => { card.style.opacity = '1'; card.style.transition = 'opacity 0.3s'; }, 10);
+        }
+      });
+    });
+  });
+
+
+  /* ----------------------------------------
+     Newsletter form
+     ---------------------------------------- */
+  const newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = newsletterForm.querySelector('.newsletter__input');
+      const btn = newsletterForm.querySelector('.newsletter__btn');
+      if (input.value.trim()) {
+        btn.textContent = 'You\'re in!';
+        btn.style.background = '#4A7C2A';
+        input.value = '';
+        input.placeholder = 'Talk soon ✓';
+        setTimeout(() => {
+          btn.textContent = 'Subscribe';
+          btn.style.background = '';
+          input.placeholder = 'your@email.com';
+        }, 4000);
+      }
+    });
   }
 
-  list.forEach((recipe) => {
-    const card = document.createElement("article");
-    card.className = "recipe-card";
 
-    card.innerHTML = `
-      <a class="recipe-link" href="${recipe.url}" target="_blank" rel="noopener noreferrer">
-        <div class="recipe-meta">${recipe.tags.join(" · ")}</div>
-        <img class="recipe-image" src="${recipe.image}" alt="${recipe.title}">
-        <h2 class="recipe-title">${recipe.title}</h2>
-        <p class="recipe-excerpt">${recipe.excerpt}</p>
-      </a>
-    `;
+  /* ----------------------------------------
+     Scroll-reveal for recipe cards
+     ---------------------------------------- */
+  const reveals = document.querySelectorAll('.recipe-card, .featured-recipe, .section-header');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    gridEl.appendChild(card);
+  reveals.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    observer.observe(el);
   });
-}
 
-function getFilteredRecipes() {
-  const q = searchInput.value.trim().toLowerCase();
-  return recipes.filter((r) => {
-    const matchesText =
-      !q ||
-      r.title.toLowerCase().includes(q) ||
-      r.excerpt.toLowerCase().includes(q) ||
-      r.tags.some((t) => t.toLowerCase().includes(q));
+  // Add visible class styles via JS
+  document.head.insertAdjacentHTML('beforeend', `
+    <style>.is-visible { opacity: 1 !important; transform: translateY(0) !important; }</style>
+  `);
 
-    const matchesTag = !activeTag || r.tags.includes(activeTag);
 
-    return matchesText && matchesTag;
+  /* ----------------------------------------
+     Ticker pause on hover
+     ---------------------------------------- */
+  const tickerTrack = document.querySelector('.ticker__track');
+  if (tickerTrack) {
+    tickerTrack.addEventListener('mouseenter', () => {
+      tickerTrack.style.animationPlayState = 'paused';
+    });
+    tickerTrack.addEventListener('mouseleave', () => {
+      tickerTrack.style.animationPlayState = 'running';
+    });
+  }
+
+
+  /* ----------------------------------------
+     Nav highlight on scroll
+     ---------------------------------------- */
+  const nav = document.querySelector('.nav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // Add shadow after scrolling past hero
+    if (scrollY > 80) {
+      nav.style.boxShadow = '0 2px 12px rgba(26,26,24,0.12)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+
+    lastScroll = scrollY;
   });
-}
 
-function update() {
-  renderRecipes(getFilteredRecipes());
-}
-
-searchInput.addEventListener("input", update);
-
-tagButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const tag = btn.dataset.tag;
-    activeTag = activeTag === tag ? null : tag;
-
-    tagButtons.forEach((b) =>
-      b.classList.toggle("active", b.dataset.tag === activeTag)
-    );
-
-    update();
-  });
 });
-
-// initial render
-renderRecipes(recipes);
