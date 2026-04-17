@@ -4,254 +4,266 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Food That We Share</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- =====================
-       NAV
-  ===================== -->
-  <header>
-    <nav class="nav">
-      <a href="/" class="nav__logo">The Food That We Share</a>
-      <ul class="nav__links">
-        <li><a href="#recipes">Recipes</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
-        <li><a href="#">Books</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#newsletter" class="nav__cta">Subscribe</a></li>
-      </ul>
-    </nav>
+  <!-- NAV -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <nav class="nav-left">
+        <a href="#">Recipes</a>
+        <a href="#">Connect with our favorite farms</a>
+      </nav>
+      <div class="mobile-svg">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11.5" r="8" stroke="#290A08" stroke-width="1.2"></circle>
+          <path d="M16.5 17L21.5 22" stroke="#290A08" stroke-width="1.2"></path>
+        </svg>
+      </div>
+      <a href="index.html" class="logo">The Food That We Share</a>
+      <nav class="nav-right">
+        <a href="#">Newsletter</a>
+        <a href="#">Search</a>
+        <a href="#">About</a>
+        <button class="btn-subscribe">Subscribe</button>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#">Recipes</a>
+      <a href="#">Our partners</a>
+      <a href="#">Newsletter</a>
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#" class="mobile-subscribe">Subscribe</a>
+    </div>
   </header>
 
-
-  <!-- =====================
-       HERO
-  ===================== -->
   <main>
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero__text">
-        <h1 class="hero__title">
-          Good food,<br>
-          made <em>simply.</em>
-        </h1>
-        <p class="hero__subtitle">
-          Recipes built on big flavor, honest ingredients, and the belief that cooking
-          should feel less like a project and more like a pleasure.
-        </p>
-        <div class="hero__actions">
-          <a href="#recipes" class="btn btn--primary">Browse Recipes</a>
-          <a href="#newsletter" class="btn btn--outline">Get the Newsletter</a>
+        <h1 class="hero-title" id="greeting"></h1>
+
+        <script>
+          const hour = new Date().getHours();
+          let greet;
+          
+          if (hour < 12) {
+            greet = "Good Morning";
+          } else if (hour < 18) {
+            greet = "Good Afternoon";
+          } else {
+            greet = "Good <i>Evening</i>";
+          }
+          
+          document.getElementById("greeting").innerHTML = greet + ". Let's find you something to eat.";
+        </script>
+    </section>
+
+    <!-- FEATURED GRID -->
+    <section class="featured-grid">
+      <div class="section-header">
+        <h2 class="section-title">Latest</h2>
+        <a href="#" class="see-all">See all →</a>
+      </div>
+
+      <div class="grid-layout">
+
+        <!-- Big card -->
+        <article class="card card--big">
+          <a href="recipe.html" class="card-img-link">
+            <img
+              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80&auto=format&fit=crop"
+              alt="Pasta with herbs"
+              class="card-img"
+            />
+          </a>
+          <div class="card-body">
+            <span class="card-tag">Pasta</span>
+            <h3 class="card-title"><a href="recipe.html">Pasta with Brown Butter, Sage &amp; Crispy Capers</a></h3>
+            <p class="card-desc">Simple ingredients, absurd results. Brown the butter until it smells nutty, add a handful of sage, and don't skip the capers.</p>
+          </div>
+        </article>
+
+        <!-- Small cards column -->
+        <div class="small-cards">
+
+          <article class="card card--small">
+            <a href="recipe.html" class="card-img-link">
+              <img
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80&auto=format&fit=crop"
+                alt="Salad bowl"
+                class="card-img"
+              />
+            </a>
+            <div class="card-body">
+              <span class="card-tag">Salads</span>
+              <h3 class="card-title"><a href="recipe.html">Shaved Fennel Salad with Citrus &amp; Olives</a></h3>
+            </div>
+          </article>
+
+          <article class="card card--small">
+            <a href="recipe.html" class="card-img-link">
+              <img
+                src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=80&auto=format&fit=crop"
+                alt="Toast with toppings"
+                class="card-img"
+              />
+            </a>
+            <div class="card-body">
+              <span class="card-tag">Breakfast</span>
+              <h3 class="card-title"><a href="recipe.html">Crushed Avocado Toast with Chilli Flakes &amp; Feta</a></h3>
+            </div>
+          </article>
+
+          <article class="card card--small">
+            <a href="recipe.html" class="card-img-link">
+              <img
+                src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&q=80&auto=format&fit=crop"
+                alt="Soup bowl"
+                class="card-img"
+              />
+            </a>
+            <div class="card-body">
+              <span class="card-tag">Soups</span>
+              <h3 class="card-title"><a href="recipe.html">White Bean &amp; Leek Soup with Lots of Parmesan</a></h3>
+            </div>
+          </article>
+
         </div>
       </div>
-      <div class="hero__image">
-        <!-- Replace src with your own hero photo -->
+    </section>
+
+    <!-- FULL-BLEED BANNER -->
+    <section class="banner-split">
+      <div class="banner-image">
         <img
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
-          alt="A beautifully plated dish"
+          src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=85&auto=format&fit=crop"
+          alt="Market vegetables"
         />
       </div>
+      <div class="banner-text">
+        <span class="banner-eyebrow">Spring 2025</span>
+        <h2 class="banner-heading">What's good<br /><em>right now</em></h2>
+        <p>Asparagus, ramps, morels, peas, spring onions — the market is finally worth getting out of bed for. Here's what to do with all of it.</p>
+        <a href="#" class="btn-primary btn-dark">Explore seasonal recipes</a>
+      </div>
     </section>
 
-
-    <!-- =====================
-         FEATURED RECIPE
-    ===================== -->
-    <section class="section" id="recipes">
+    <!-- MORE RECIPES ROW -->
+    <section class="more-recipes">
       <div class="section-header">
-        <h2 class="section-title">This Week's Recipe</h2>
-        <a href="#" class="section-link">All recipes →</a>
+        <h2 class="section-title">More to cook</h2>
+        <a href="#" class="see-all">See all →</a>
       </div>
+      <div class="row-cards">
 
-      <article class="featured-recipe">
-        <div class="featured-recipe__image">
-          <img
-            src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80"
-            alt="Slow Cooked Lamb"
-          />
-        </div>
-        <div class="featured-recipe__content">
-          <span class="featured-recipe__label">★ &nbsp; Featured this week</span>
-          <h3 class="featured-recipe__title">
-            Slow Cooked Lamb<br>with White Wine<br>&amp; Potatoes
-          </h3>
-          <p class="featured-recipe__desc">
-            The most important part of this recipe is that it takes a long (slow) time,
-            and I prefer to do it overnight. Don't overthink it — it's a beyond simple dish
-            with exquisite results.
-          </p>
-          <a href="#" class="btn btn--primary">Get the Recipe</a>
-        </div>
-      </article>
-    </section>
-
-
-    <!-- =====================
-         RECIPE GRID
-    ===================== -->
-    <section class="section section--alt">
-      <div class="section-header">
-        <h2 class="section-title">More to Cook</h2>
-        <a href="#" class="section-link">See all →</a>
-      </div>
-
-      <!-- Filter Pills -->
-      <div class="categories" style="margin-bottom: 2.5rem;">
-        <button class="category-pill active" data-category="all">All</button>
-        <button class="category-pill" data-category="pasta">Pasta</button>
-        <button class="category-pill" data-category="chicken">Chicken</button>
-        <button class="category-pill" data-category="vegetables">Vegetables</button>
-        <button class="category-pill" data-category="dessert">Dessert</button>
-        <button class="category-pill" data-category="salads">Salads</button>
-      </div>
-
-      <div class="recipe-grid">
-
-        <article class="recipe-card" data-category="pasta">
-          <div class="recipe-card__image">
-            <img
-              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80"
-              alt="Pasta dish"
-            />
-          </div>
-          <div class="recipe-card__body">
-            <div class="recipe-card__tag">Pasta</div>
-            <h3 class="recipe-card__title">Caramelized Onion Pasta</h3>
-            <p class="recipe-card__desc">The kind of pasta you'll make on a Tuesday and think about until Friday.</p>
-          </div>
+        <article class="row-card">
+          <a href="recipe.html">
+            <div class="row-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=700&q=80&auto=format&fit=crop"
+                alt="Steak"
+                class="card-img"
+              />
+            </div>
+          </a>
+          <span class="card-tag">Meat</span>
+          <h3 class="row-card-title"><a href="recipe.html">Skirt Steak with Chimichurri</a></h3>
         </article>
 
-        <article class="recipe-card" data-category="chicken">
-          <div class="recipe-card__image">
-            <img
-              src="https://images.unsplash.com/photo-1598103442097-8b74394b95c8?w=600&q=80"
-              alt="Roast chicken"
-            />
-          </div>
-          <div class="recipe-card__body">
-            <div class="recipe-card__tag">Chicken</div>
-            <h3 class="recipe-card__title">Spatchcocked Roast Chicken</h3>
-            <p class="recipe-card__desc">Crispy skin, juicy meat, done in half the time. This is the only way.</p>
-          </div>
+        <article class="row-card">
+          <a href="recipe.html">
+            <div class="row-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=700&q=80&auto=format&fit=crop"
+                alt="Cake"
+                class="card-img"
+              />
+            </div>
+          </a>
+          <span class="card-tag">Baking</span>
+          <h3 class="row-card-title"><a href="recipe.html">Olive Oil Cake with Rosemary &amp; Lemon</a></h3>
         </article>
 
-        <article class="recipe-card" data-category="dessert">
-          <div class="recipe-card__image">
-            <img
-              src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80"
-              alt="Chocolate cookies"
-            />
-          </div>
-          <div class="recipe-card__body">
-            <div class="recipe-card__tag">Dessert</div>
-            <h3 class="recipe-card__title">Salted Chocolate Chunk Cookies</h3>
-            <p class="recipe-card__desc">Brown butter, maldon salt, and pools of chocolate. Your move.</p>
-          </div>
+        <article class="row-card">
+          <a href="recipe.html">
+            <div class="row-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=700&q=80&auto=format&fit=crop"
+                alt="Fried rice"
+                class="card-img"
+              />
+            </div>
+          </a>
+          <span class="card-tag">Weeknight</span>
+          <h3 class="row-card-title"><a href="recipe.html">Ginger Fried Rice with a Fried Egg</a></h3>
+        </article>
+
+        <article class="row-card">
+          <a href="recipe.html">
+            <div class="row-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&q=80&auto=format&fit=crop"
+                alt="Fish"
+                class="card-img"
+              />
+            </div>
+          </a>
+          <span class="card-tag">Fish</span>
+          <h3 class="row-card-title"><a href="recipe.html">Roasted Salmon with Miso Butter</a></h3>
         </article>
 
       </div>
     </section>
 
-
-    <!-- =====================
-         EXPLORE CATEGORIES
-    ===================== -->
-    <section class="section section--green">
-      <div class="section-header">
-        <h2 class="section-title">Browse by Category</h2>
-      </div>
-      <div class="categories">
-        <a href="#" class="category-pill">Fish &amp; Seafood</a>
-        <a href="#" class="category-pill">Meat</a>
-        <a href="#" class="category-pill">Pasta &amp; Noodles</a>
-        <a href="#" class="category-pill">Rice &amp; Grains</a>
-        <a href="#" class="category-pill">Vegetables</a>
-        <a href="#" class="category-pill">Salads</a>
-        <a href="#" class="category-pill">Snacks</a>
-        <a href="#" class="category-pill">Soups &amp; Stews</a>
-        <a href="#" class="category-pill">Dessert</a>
-        <a href="#" class="category-pill">Breakfast</a>
-        <a href="#" class="category-pill">Drinks</a>
-      </div>
-    </section>
-
-
-    <!-- =====================
-         NEWSLETTER
-    ===================== -->
-    <section class="newsletter" id="newsletter">
-      <div>
-        <h2 class="newsletter__title">A Newsletter Worth<br>Opening.</h2>
-        <p class="newsletter__sub">
-          Recipes, opinions, recommendations, and the occasional cooking rant.
-          Delivered to your inbox when it's worth it.
-        </p>
-      </div>
-      <div>
-        <form class="newsletter__form" id="newsletter-form">
-          <input
-            type="email"
-            class="newsletter__input"
-            placeholder="your@email.com"
-            required
-            aria-label="Email address"
-          />
-          <button type="submit" class="newsletter__btn">Subscribe</button>
-        </form>
-        <p style="margin-top: 1rem; font-size: 0.72rem; opacity: 0.45; letter-spacing: 0.04em;">
-          No spam. Unsubscribe any time.
-        </p>
+    <!-- NEWSLETTER BAND -->
+    <section class="newsletter-band">
+      <h2>Recipes in your inbox,<br /><em>every week.</em></h2>
+      <p>No noise. Just good food ideas, written like a friend who actually cooks.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" />
+        <button type="button">Subscribe</button>
       </div>
     </section>
 
   </main>
 
-
-  <!-- =====================
-       FOOTER
-  ===================== -->
-  <footer class="footer">
-    <div class="footer__grid">
-      <div>
-        <div class="footer__brand">The Food That We Share</div>
-        <p class="footer__tagline">
-          Recipes, newsletters, and the honest belief that cooking should bring you joy, not stress.
-        </p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">The Food That We Share</a>
+        <p>Real food for real life. No fuss.</p>
       </div>
-      <div>
-        <div class="footer__heading">Explore</div>
-        <ul class="footer__links">
-          <li><a href="#">All Recipes</a></li>
-          <li><a href="#">Newsletter</a></li>
-          <li><a href="#">Books</a></li>
-          <li><a href="#">Recommendations</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer__heading">Categories</div>
-        <ul class="footer__links">
-          <li><a href="#">Pasta</a></li>
-          <li><a href="#">Chicken</a></li>
-          <li><a href="#">Vegetables</a></li>
-          <li><a href="#">Dessert</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer__heading">Follow</div>
-        <ul class="footer__links">
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">YouTube</a></li>
-          <li><a href="#">Substack</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <strong>Explore</strong>
+          <a href="#">All Recipes</a>
+          <a href="#">By Season</a>
+          <a href="#">By Category</a>
+        </div>
+        <div class="footer-col">
+          <strong>Connect</strong>
+          <a href="#">Instagram</a>
+          <a href="#">Newsletter</a>
+          <a href="#">About</a>
+        </div>
+      </nav>
     </div>
-    <div class="footer__bottom">
-      <span>© 2026 Your Name. All rights reserved.</span>
-      <span>Made with intention.</span>
+    <div class="footer-bottom">
+      <span>© 2025 The Food That We Share</span>
+      <span>Made with love &amp; too much olive oil</span>
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
