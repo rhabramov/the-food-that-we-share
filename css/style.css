@@ -360,10 +360,10 @@ a { color: inherit; text-decoration: none; }
 .section-title {
   font-family: var(--ff-display);
   font-size: clamp(2.2rem, 4vw, 3.5rem);
-  font-weight: 900;
+  font-weight: 300;
   font-style: italic;
   color: var(--dark);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
 }
 
 .see-all {
