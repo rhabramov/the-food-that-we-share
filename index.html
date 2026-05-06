@@ -12,11 +12,17 @@
 <body>
 
   <!-- NAV -->
-  <header class="site-header" id="site-header">
+  <div id="nav-placeholder"></div>
+
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("navbar.html");
+    });
+  </script>
+  <!-- <header class="site-header" id="site-header">
     <div class="header-inner">
       <nav class="nav-left">
         <a href="index.html" class="logo">The Food That We Share</a>
-        <!-- <a href="#">Connect with our favorite farms</a> -->
       </nav>
       <div class="mobile-svg">
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +51,7 @@
       <a href="about.html">About</a>
       <a href="#" class="mobile-subscribe">Subscribe</a>
     </div>
-  </header>
+  </header> -->
 
   <main>
     <!-- HERO -->
