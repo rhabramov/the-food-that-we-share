@@ -58,27 +58,25 @@
   <main>
     <!-- HERO -->
     <section class="hero">
+      <video autoplay loop muted="yes" playsinline width="70%">
+        <source src="photos/salad.mp4" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
+      <h1 class="hero-title" id="greeting"></h1>
+      <script>
+        const hour = new Date().getHours();
+        let greet;
 
-        <video autoplay loop muted="yes" playsinline width="70%">
-          <source src="photos/salad.mp4" type="video/quicktime">
-          Your browser does not support the video tag.
-        </video>
-        <h1 class="hero-title" id="greeting"></h1>
+        if (hour < 12) {
+          greet = "Good <i>Morning</i>";
+        } else if (hour < 18) {
+          greet = "Good <i>Afternoon</i>";
+        } else {
+          greet = "Good <i>Evening</i>";
+        }
 
-        <script>
-          const hour = new Date().getHours();
-          let greet;
-          
-          if (hour < 12) {
-            greet = "Good <i>Morning</i>";
-          } else if (hour < 18) {
-            greet = "Good <i>Afternoon</i>";
-          } else {
-            greet = "Good <i>Evening</i>";
-          }
-          
-          document.getElementById("greeting").innerHTML = greet + ". Let's find you something to eat.";
-        </script>
+        document.getElementById("greeting").innerHTML = greet + ". Let's find you something to eat.";
+      </script>
     </section>
 
     <!-- FEATURED GRID -->
@@ -118,7 +116,6 @@
             <div class="card-body">
               <span class="card-tag">Dessert</span>
               <h3 class="card-title"><a href="recipe.html">Lemon Merginue Cake</a></h3>
-              <p class="card-desc">blah blah blah</p>
             </div>
           </article>
 
@@ -132,7 +129,6 @@
             <div class="card-body">
               <span class="card-tag">Dinner</span>
               <h3 class="card-title"><a href="recipe.html">Homemade Pasta</a></h3>
-              <p class="card-desc">blah blah blah</p>
             </div>
           </article>
 
@@ -146,7 +142,7 @@
             <div class="card-body">
               <span class="card-tag">Soups</span>
               <h3 class="card-title"><a href="recipe.html">Lentil, Bean, and Carrot Soup</a></h3>
-              <p class="card-desc">blah blah blah</p>
+              <!-- <p class="card-desc">blah blah blah</p> -->
             </div>
           </article>
 
@@ -173,7 +169,7 @@
           </a>
           <span class="card-tag">Vegetarian</span>
           <h3 class="row-card-title"><a href="recipe.html">Rolled Onion Tart</a></h3>
-          <p class="row-card-desc">blah blah blah</p>
+          <!-- <p class="row-card-desc">blah blah blah</p> -->
         </article>
 
         <article class="row-card">
@@ -186,8 +182,7 @@
             </div>
           </a>
           <span class="card-tag">Bowls</span>
-          <h3 class="row-card-title"><a href="recipe.html">Black rice with sweet potatoe &amp; pomegranate seeds</a></h3>
-          <p class="row-card-desc">blah blah blah</p>
+          <h3 class="row-card-title"><a href="recipe.html">Black rice with sweet potato &amp; pomegranate seeds</a></h3>
         </article>
 
         <article class="row-card">
@@ -201,7 +196,6 @@
           </a>
           <span class="card-tag">Soups</span>
           <h3 class="row-card-title"><a href="recipe.html">Tortilla Soup with avocado</a></h3>
-          <p class="row-card-desc">blah blah blah</p>
         </article>
 
         <article class="row-card">
@@ -215,7 +209,6 @@
           </a>
           <span class="card-tag">Salads</span>
           <h3 class="row-card-title"><a href="recipe.html">Cara cara orange salad</a></h3>
-          <p class="row-card-desc">blah blah blah</p>
         </article>
 
       </div>
